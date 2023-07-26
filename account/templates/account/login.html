@@ -1,0 +1,35 @@
+{% extends 'account/base.html' %}
+
+{% block content %}
+<div class="m-5 p-3">
+  <div class="m-4 border rounded p-3 ">
+    <h3>QuoraBee - Login via Username</h1>
+      {% if form.errors %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for error in form.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+        <form method="post" >
+            {{ form.as_p }}
+            {% csrf_token %}
+           <input type="submit" class="btn btn-dark " value="Log in">
+        </form>
+
+        <div class="d-flex flex-row bd-highlight mb-3">
+            <div class="p-2 bd-highlight text-capitalize text-semibold fs-5">I don't have quorabee account | </div>
+            <div class="p-2 bd-highlight"><a class="text-semibold btn btn-secondary" href="{% url 'account:signup' %}">Signup</a></div>
+        </div>
+        <div class="d-flex flex-row bd-highlight mb-3">
+   
+          <div class="p-2 bd-highlight"><a class="text-semibold btn btn-info" href="{% url 'home' %}">Back Home</a></div>
+         
+      </div>
+  </div>
+</div>
+
+
+{% endblock content %}
